@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="result-container">
+        <div id="result" class="result"></div>
+    </div>
+    <div class="game-container">
+        <h1>Rock, Paper, Scissors!</h1>
+        <div>
+            <img src="rock.png" alt="Player One Choice" id="playerChoice">
+            <img src="paper.png" alt="Player Two Choice" id="playertwo">
+        </div>
+        <button onclick="PlayGame()">Play Game</button>
+    </div>
+    <script>
+        var choices = ['rock.png', 'paper.png', 'scissors.png'];
+
+        var playerOneIndex = Math.floor(Math.random() * choices.length);
+        var playerTwoIndex = Math.floor(Math.random() * choices.length);
+        var playerOneChoice = choices[playerOneIndex];
+        var playerTwoChoice = choices[playerTwoIndex];
+        var playerChoiceImage = document.getElementById('playerChoice');
+        var playerTwoImage = document.getElementById('playertwo');
+
+        playerChoiceImage.src = playerOneChoice;
+        playerTwoImage.src = playerTwoChoice;
+
+        if (playerOneChoice === playerTwoChoice) {
+            document.querySelector('h1').innerHTML = "its a tie"
+        } else if (
+            (playerOneChoice === 'rock.png' && playerTwoChoice === 'scissors.png')
+            ||
+            (playerOneChoice === 'scissors.png' && playerTwoChoice === 'paper.png')
+            ||
+            (playerOneChoice === 'paper.png' && playerTwoChoice === 'rock.png')
+        ) {
+            document.querySelector('h1').innerHTML = "Player One Wins"
+
+        } else {
+            document.querySelector('h1').innerHTML = "Player Two Wins"
+        }
+    
+    </script>
+</body>
+
+</html>
